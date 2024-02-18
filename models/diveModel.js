@@ -1,12 +1,11 @@
-const { Int32 } = require('mongodb');
 const mongoose = require('mongoose');
 
 const diveSchema = new mongoose.Schema({
     diveCode: {
-        type: Number,
+        type: String,
         unique: true,
         trim: true,
-
+        required: true
     },
     objectCode: {
         type: String,
@@ -44,7 +43,6 @@ const diveSchema = new mongoose.Schema({
     },
     AR: {
         type: Boolean,
-
 
     },
     humanWildlifeInteraction: {
@@ -127,7 +125,9 @@ const diveSchema = new mongoose.Schema({
         type: Date,
     }
 
-});
+},
+    { useCreateIndex: true }
+);
 
 
 const Dive = mongoose.model('Dive', diveSchema);

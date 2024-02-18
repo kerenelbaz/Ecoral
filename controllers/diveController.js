@@ -1,7 +1,7 @@
 const Dive = require("../models/diveModel");
 
-exports.getAllDives = async(req,res)=>{
-    try{
+exports.getAllDives = async (req, res) => {
+    try {
         const dives = await Dive.find();
         console.log(Dive);
 
@@ -9,15 +9,33 @@ exports.getAllDives = async(req,res)=>{
             status: 'success',
             results: dives.length,
             data: {
-              dives,
+                dives,
             },
         });
 
     }
-    catch(err){
+    catch (err) {
         res.status(404).json({
             status: 'fail',
-            message: err.message, 
+            message: err.message,
+        });
+    }
+}
+
+exports.createDive = async (req, res) => {
+    try {
+        const newDive = await Dive.create(req.body);
+        res.status(201).json({
+            status: 'success',
+            data: {
+                dive: newDive
+            }
+        });
+
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: err.message
         });
     }
 }
