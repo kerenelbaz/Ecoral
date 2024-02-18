@@ -35,7 +35,45 @@ exports.createDive = async (req, res) => {
     } catch (err) {
         res.status(400).json({
             status: 'fail',
-            message: err.message
+            message: err
         });
+    }
+}
+
+exports.updateDive = async (req, res) => {
+    try {
+        const diveToUpdate = await Dive.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                diveToUpdate
+            }
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err.message
+        })
+    }
+}
+
+exports.deleteDive = async (req, res) => {
+    try {
+        const diveToDelete = await Dive.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            status: 'success',
+            data: null,
+            message: `${req.params.id} deleted !`
+        });
+
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        })
     }
 }

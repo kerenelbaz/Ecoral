@@ -10,5 +10,10 @@ router
   .get(diveController.getAllDives)
   .post(diveController.createDive);
 
+router
+  .route('/:id')
+  .delete(diveController.deleteDive)
+  .patch(diveController.updateDive);
+
 
 module.exports = router;
