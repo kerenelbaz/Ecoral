@@ -3,6 +3,7 @@ const Dive = require("../models/diveModel");
 exports.getAllDives = async(req,res)=>{
     try{
         const dives = await Dive.find();
+        console.log(Dive);
 
         res.status(200).json({
             status: 'success',
