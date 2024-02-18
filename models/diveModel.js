@@ -130,6 +130,6 @@ const diveSchema = new mongoose.Schema({
 });
 
 
-const Dive = mongoose.model('dives', diveSchema);
+const Dive = mongoose.model('Dive', diveSchema);
 
 module.exports = Dive;
