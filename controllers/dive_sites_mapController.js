@@ -1,21 +1,21 @@
-const Dive = require("../models/diveModel");
+const DiveSite = require("../models/diveSitesModel");
 const APIfeatures = require("../utils/APIfeatures");
 
-exports.getAllDives = async (req, res) => {
+exports.getAllDiveSites = async (req, res) => {
   try {
     console.log(req.query);
-    const features = new APIfeatures(Dive.find(), req.query)
+    const features = new APIfeatures(DiveSite.find(), req.query)
       .filter()
       .sort()
       .limitFields()
       .pagination();
-    const dives = await features.findCommand;
+    const diveSites = await features.findCommand;
 
     res.status(200).json({
       status: "success",
-      results: dives.length,
+      results: diveSites.length,
       data: {
-        dives,
+        diveSites,
       },
     });
   } catch (err) {
@@ -26,13 +26,13 @@ exports.getAllDives = async (req, res) => {
   }
 };
 
-exports.createDive = async (req, res) => {
+exports.createDiveSite = async (req, res) => {
   try {
-    const newDive = await Dive.create(req.body);
+    const newDiveSite = await DiveSite.create(req.body);
     res.status(201).json({
       status: "success",
       data: {
-        dive: newDive,
+        diveSite: newDiveSite,
       },
     });
   } catch (err) {
@@ -43,17 +43,21 @@ exports.createDive = async (req, res) => {
   }
 };
 
-exports.updateDive = async (req, res) => {
+exports.updateDiveSite = async (req, res) => {
   try {
-    const diveToUpdate = await Dive.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const diveSiteToUpdate = await DiveSite.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
     res.status(200).json({
       status: "success",
       data: {
-        diveToUpdate,
+        diveSiteToUpdate,
       },
     });
   } catch (err) {
@@ -64,9 +68,9 @@ exports.updateDive = async (req, res) => {
   }
 };
 
-exports.deleteDive = async (req, res) => {
+exports.deleteDiveSite = async (req, res) => {
   try {
-    const diveToDelete = await Dive.findByIdAndDelete(req.params.id);
+    const diveSiteToDelete = await DiveSite.findByIdAndDelete(req.params.id);
     res.status(200).json({
       status: "success",
       data: null,

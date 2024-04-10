@@ -1,135 +1,107 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const diveSchema = new mongoose.Schema({
+const diveSchema = new mongoose.Schema(
+  {
     diveCode: {
-        type: String,
-        unique: true,
-        trim: true,
-        required: true
+      type: String,
+      unique: true,
+      trim: true,
+      required: true,
     },
     objectCode: {
-        type: String,
-        trim: true,
-
+      type: String,
+      trim: true,
     },
     date: {
-        type: Date,
-
-
+      type: Date,
     },
     time: {
-        type: String,
-
+      type: String,
     },
     diveSite: {
-        type: String,
-
+      type: String,
     },
     objectGroup: {
-        type: String,
-
+      type: String,
     },
     specie: {
-        type: String,
-
+      type: String,
     },
     idCode_photographerName: {
-        type: String,
-
+      type: String,
     },
     imageLocation: {
-        type: String,
-
+      type: String,
     },
     AR: {
-        type: Boolean,
-
+      type: String,
     },
     humanWildlifeInteraction: {
-        type: String,
-
+      type: String,
     },
     reportType: {
-        type: String,
-        enum: {
-            values: ['snorkeling', 'SCUBA', 'freediving'],
-            message: 'reportType is either: snorkeling, SCUBA freediving'
-        },
-
+      type: String,
+      enum: {
+        values: ["snorkeling", "SCUBA", "freediving"],
+        message: "reportType is either: snorkeling, SCUBA freediving",
+      },
     },
     typeOfDive: {
-        type: String,
-
+      type: String,
     },
     rankOfDive: {
-        type: Number,
-        enum: {
-            values: [1, 2, 3, 4, 5],
-            message: 'rankOfDive is between 1-5',
-        },
-
+      type: Number,
+      enum: {
+        values: [1, 2, 3, 4, 5],
+        message: "rankOfDive is between 1-5",
+      },
     },
     media: {
-        type: String,
-
+      type: String,
     },
     documentation: {
-        type: String,
-
+      type: String,
     },
     ageOfDiver: {
-        type: String,
-
-
+      type: String,
     },
     sexOfDiver: {
-        type: String,
-
+      type: String,
     },
     maxDepth: {
-        type: Number,
-
-
+      type: Number,
     },
     distance: {
-        type: Number,
-
+      type: Number,
     },
     temp: {
-        type: Number,
-
+      type: Number,
     },
     userDescription: {
-        type: String,
-        trim: true,
-
+      type: String,
+      trim: true,
     },
     researcherComment: {
-        type: String,
-        trim: true,
+      type: String,
+      trim: true,
     },
     linkURL: {
-        type: String,
-
+      type: String,
     },
     loggedBy: {
-        type: String,
-
+      type: String,
     },
     loggingDate: {
-        type: Date,
-        default: Date.now(),
-
+      type: Date,
+      default: Date.now(),
     },
     reportReceivingDate: {
-        type: Date,
-    }
-
-},
-    { useCreateIndex: true }
+      type: Date,
+    },
+  },
+  { useCreateIndex: true }
 );
 
-
-const Dive = mongoose.model('Dive', diveSchema);
+const Dive = mongoose.model("Dive", diveSchema);
 
 module.exports = Dive;
