@@ -20,7 +20,10 @@ mongoose
   });
 
 // Enable CORS middleware
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3030' // Allow requests from this origin
+}));
 
 //start the server
 const port = 3030 || process.env.PORT || 3000;
