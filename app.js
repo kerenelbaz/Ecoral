@@ -1,11 +1,13 @@
 const express = require("express");
 const morgan = require("morgan");
-
+const cors = require("cors"); // Import CORS middleware
 const diveRouter = require("./routes/diveRoutes");
 const dive_sites_mapRouter = require("./routes/dive_sites_mapRoutes");
 const pendings_divesRoutes = require("./routes/pendings_divesRoutes");
 
 const app = express();
+
+app.use(cors());
 
 //1. midlewares
 if (process.env.NODE_ENV === "development") {
