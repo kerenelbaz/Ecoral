@@ -13,7 +13,7 @@ const pendingDiveSchema = new mongoose.Schema(
       trim: true,
     },
     date: {
-      type: Date,
+      type: String,
     },
     time: {
       type: String,
@@ -41,20 +41,12 @@ const pendingDiveSchema = new mongoose.Schema(
     },
     reportType: {
       type: String,
-      enum: {
-        values: ["snorkeling", "SCUBA", "freediving"],
-        message: "reportType is either: snorkeling, SCUBA freediving",
-      },
     },
     typeOfDive: {
       type: String,
     },
     rankOfDive: {
-      type: Number,
-      enum: {
-        values: [1, 2, 3, 4, 5],
-        message: "rankOfDive is between 1-5",
-      },
+      type: String,
     },
     media: {
       type: String,
@@ -69,13 +61,13 @@ const pendingDiveSchema = new mongoose.Schema(
       type: String,
     },
     maxDepth: {
-      type: Number,
+      type: String,
     },
     distance: {
-      type: Number,
+      type: String,
     },
     temp: {
-      type: Number,
+      type: String,
     },
     userDescription: {
       type: String,
@@ -98,6 +90,9 @@ const pendingDiveSchema = new mongoose.Schema(
     reportReceivingDate: {
       type: Date,
     },
+    file:{
+      type: String
+    }
   },
   { useCreateIndex: true }
 );

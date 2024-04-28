@@ -8,7 +8,8 @@ const router = express.Router();
 router
   .route('/')
   .get(pendings_divesController.getAllPendingsDives)
-  .post(pendings_divesController.createPendingDive);
+  .post(pendings_divesController.createPendingDive)
+  .delete(pendings_divesController.clearPendingDives);
 
 router
   .route('/:id')

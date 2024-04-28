@@ -64,6 +64,25 @@ exports.updatePendingDive = async (req, res) => {
   }
 };
 
+exports.clearPendingDives = async (req, res) => {
+  try {
+    // Delete all documents from the pendingDives collection
+    await PendingDive.deleteMany({});
+
+    res.status(200).json({
+      status: "success",
+      message: "All pending dives cleared successfully",
+    });
+  } catch (err) {
+    // If an error occurs during deletion
+    console.error("Error clearing pending dives:", err);
+    res.status(500).json({
+      status: "fail",
+      message: "An error occurred while clearing pending dives",
+    });
+  }
+};
+
 exports.deletePendingDive = async (req, res) => {
   try {
     const pendingDiveToDelete = await PendingDive.findByIdAndDelete(req.params.id);
