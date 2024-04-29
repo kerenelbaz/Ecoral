@@ -91,7 +91,9 @@ const pendingDiveSchema = new mongoose.Schema(
       type: Date,
     },
     file:{
-      type: String
+      type: String,
+      // data: Buffer,
+      // contentType: String
     }
   },
   { useCreateIndex: true }
