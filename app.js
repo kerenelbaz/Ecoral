@@ -9,7 +9,8 @@ const pendings_divesRoutes = require("./routes/pendings_divesRoutes");
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json({ limit: '50mb' })); // Set limit for JSON body size
+app.use(bodyParser.json({ limit: '50mb' })); 
+
 
 //1. midlewares
 if (process.env.NODE_ENV === "development") {
