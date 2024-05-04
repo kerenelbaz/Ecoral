@@ -5,12 +5,12 @@ const router = express.Router();
 
 
 router
-  .route('/')
-  .get(articleController.getAllArticles) 
-  .post(articleController.createArticle); 
+  .route("/")
+  .get(articleController.getAllArticle) 
+  .post(articleController.createArticle)
 
 router
-  .route('/:id')
+  .route("/:id")
   .delete(articleController.deleteArticle)
   .patch(articleController.updateArticle); 
 
