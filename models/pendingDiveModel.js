@@ -94,6 +94,12 @@ const pendingDiveSchema = new mongoose.Schema(
       type: String,
       // data: Buffer,
       // contentType: String
+    },
+    age:{
+      type: Number,
+    },
+    gender:{
+      type: String,
     }
   },
   { useCreateIndex: true }
