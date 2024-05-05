@@ -5,8 +5,8 @@ const diveSitesSchema = new mongoose.Schema(
     type: {
       type: String,
       enum: {
-        values: ["diveSite", "animal", "plant"],
-        message: "type is either: diveSite, animal, plant",
+        values: ["Dive site", "Animal", "Plant"],
+        message: "type is either: Dive site, Animal, Plant",
       },
     },
     name: {
