@@ -2,12 +2,11 @@ const mongoose = require("mongoose");
 
 const pendingDiveSchema = new mongoose.Schema(
   {
-    diveCode: {
-      type: String,
-      unique: true,
-      trim: true,
-      // required: true,
-    },
+    // diveCode: {
+    //   type: String,
+    //   unique: true,
+    //   trim: true,
+    // },
     objectCode: {
       type: String,
       trim: true,
