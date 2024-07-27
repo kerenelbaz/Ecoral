@@ -8,17 +8,11 @@ const pendings_divesRoutes = require("./routes/pendings_divesRoutes");
 const articleRoutes = require("./routes/articleRoutes");
 
 const app = express();
-const port = process.env.PORT || 8000; // Use default port 3000 if PORT is not set
-
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-});
-
 
 app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
 
-//1. midlewares
+//1. middlewares
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
