@@ -7,7 +7,7 @@ const dive_sites_mapRouter = require("./routes/dive_sites_mapRoutes");
 const pendings_divesRoutes = require("./routes/pendings_divesRoutes");
 const articleRoutes = require("./routes/articleRoutes");
 
-const app = express();
+// const app = express();
 const port = process.env.PORT || 8000; // Use default port 3000 if PORT is not set
 
 const mongoose = require("mongoose");
