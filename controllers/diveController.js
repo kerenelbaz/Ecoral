@@ -45,6 +45,7 @@ exports.createDive = async (req, res) => {
 
 exports.updateDive = async (req, res) => {
   try {
+    console.log("Updating dive with ID:", req.params.id);
     const diveToUpdate = await Dive.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
