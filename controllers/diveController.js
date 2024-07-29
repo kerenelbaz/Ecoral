@@ -51,19 +51,27 @@ exports.updateDive = async (req, res) => {
       runValidators: true,
     });
 
+    if (!diveToUpdate) {
+      return res.status(404).json({
+        status: "fail",
+        message: "No dive found with that ID",
+      });
+    }
+
     res.status(200).json({
       status: "success",
       data: {
-        diveToUpdate,
+        dive: diveToUpdate,
       },
     });
   } catch (err) {
-    res.status(404).json({
+    res.status(400).json({
       status: "fail",
       message: err.message,
     });
   }
 };
+
 
 exports.deleteDive = async (req, res) => {
   try {
