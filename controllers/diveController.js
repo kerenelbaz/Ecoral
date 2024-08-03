@@ -12,7 +12,7 @@ cloudinary.config({
 });
 
 exports.getAllDives = async (req, res) => {
-  console.log("koko");
+  console.log("koko!");
   try {
     console.log(req.query);
     const features = new APIfeatures(Dive.find(), req.query)
