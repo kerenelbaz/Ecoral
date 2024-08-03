@@ -90,7 +90,7 @@ const diveSchema = new mongoose.Schema(
       type: Date,
       default: Date.now(),
     },
-    file: {
+    fileLink: {
       type: String,
     },
   },
