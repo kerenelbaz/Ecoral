@@ -1,6 +1,16 @@
 const Dive = require("../models/diveModel");
 const APIfeatures = require("../utils/APIfeatures");
 
+const cloudinary = require('cloudinary').v2;
+require('dotenv').config({ path: './config.env' }); 
+
+// Configure Cloudinary with environment variables
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 exports.getAllDives = async (req, res) => {
   try {
     console.log(req.query);
@@ -86,5 +96,20 @@ exports.deleteDive = async (req, res) => {
       status: "fail",
       message: err,
     });
+  }
+};
+
+// New function for deleting an image from Cloudinary
+exports.deleteImage = async (req, res) => {
+  console.log("deleting image...");
+  console.log(req.body.publicId);
+  try {
+    const { publicId } = req.body;
+
+    // Delete the image
+    const deleteResult = await cloudinary.uploader.destroy(publicId);
+    res.json(deleteResult);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };

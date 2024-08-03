@@ -11,6 +11,7 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //1. middlewares
 if (process.env.NODE_ENV === "development") {

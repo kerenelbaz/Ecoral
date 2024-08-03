@@ -15,5 +15,8 @@ router
   .delete(diveController.deleteDive)
   .patch(diveController.updateDive);
 
+router
+  .route('/delete-image')
+  .post(diveController.deleteImage);
 
 module.exports = router;
