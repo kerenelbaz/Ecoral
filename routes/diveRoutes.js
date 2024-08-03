@@ -17,6 +17,7 @@ router
 
 router
   .route('/delete-image')
+  .get(diveController.printSomething)
   .post(diveController.deleteImage);
 
 module.exports = router;

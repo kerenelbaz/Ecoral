@@ -100,16 +100,27 @@ exports.deleteDive = async (req, res) => {
 };
 
 // New function for deleting an image from Cloudinary
-exports.deleteImage = async (req, res) => {
-  console.log("deleting image...");
-  console.log(req.body.publicId);
-  try {
-    const { publicId } = req.body;
+// exports.deleteImage = async (req, res) => {
+//   console.log("deleting image...");
+//   console.log(req.body.publicId);
+//   try {
+//     const { publicId } = req.body;
 
-    // Delete the image
-    const deleteResult = await cloudinary.uploader.destroy(publicId);
-    res.json(deleteResult);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+//     // Delete the image
+//     const deleteResult = await cloudinary.uploader.destroy(publicId);
+//     res.json(deleteResult);
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// };
+
+exports.deleteImage = (req, res) => {
+  console.log("Received request to delete image...", req.body);
+  res.status(200).json({ message: "Endpoint is reachable" });
 };
+
+exports.printSomething = (req, res) => {
+  console.log("Received request to delete image...", req.body);
+  res.status(200).json({ message: "Endpoint is reachable" });
+};
+
