@@ -2,7 +2,7 @@ const Dive = require("../models/diveModel");
 const APIfeatures = require("../utils/APIfeatures");
 
 const cloudinary = require('cloudinary').v2;
-require('dotenv').config({ path: './config.env' }); 
+require('dotenv').config({ path: './config.env' });
 
 // Configure Cloudinary with environment variables
 cloudinary.config({
@@ -12,6 +12,7 @@ cloudinary.config({
 });
 
 exports.getAllDives = async (req, res) => {
+  console.log("koko");
   try {
     console.log(req.query);
     const features = new APIfeatures(Dive.find(), req.query)
