@@ -12,7 +12,6 @@ cloudinary.config({
 });
 
 exports.getAllDives = async (req, res) => {
-  console.log("koko bambino");
   try {
     console.log(req.query);
     const features = new APIfeatures(Dive.find(), req.query)
@@ -115,13 +114,15 @@ exports.deleteImage = async (req, res) => {
   }
 };
 
-// exports.deleteImage = (req, res) => {
-//   console.log("Received request to delete image...", req.body);
-//   res.status(200).json({ message: "Endpoint is reachable" });
-// };
-
-exports.printSomething = (req, res) => {
-  console.log("Received request to delete image...", req.body);
-  res.status(200).json({ message: "Endpoint is reachable" });
+exports.getDive = async (req, res, next) => {
+  const dive = await Dive.findById(req.params.id);
+  if (!dive) {
+    return next(new AppError('No dive found with that ID', 404));
+  }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      dive
+    }
+  });
 };
-

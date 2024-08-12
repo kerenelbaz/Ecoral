@@ -12,12 +12,12 @@ router
 
 router
   .route('/:id')
+  .get(diveController.getDive)
   .delete(diveController.deleteDive)
   .patch(diveController.updateDive);
 
 router
   .route('/delete-image')
-  .get(diveController.printSomething)
   .post(diveController.deleteImage);
 
 module.exports = router;
